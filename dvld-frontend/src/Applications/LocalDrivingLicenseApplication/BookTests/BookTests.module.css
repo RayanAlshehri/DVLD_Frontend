@@ -1,0 +1,22 @@
+.appointments-container h2 {
+    margin-bottom: 5px;
+}
+
+.appointment-info-container {
+    display: flex;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 20px;
+    min-width: 400px;
+    margin-bottom: 30px;
+}
+
+.appointment-info-container p {
+    margin-top: 6px;
+    margin-bottom: 10px;
+}
+
+.appointment-button {
+    padding: 5px;
+    margin-left: auto;
+}

@@ -1,0 +1,40 @@
+:global(.css-1h9z7r5-MuiButtonBase-root-MuiTab-root ).tab {
+    margin-right: 200px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:global(.css-1ujnqem-MuiTabs-root  .css-11yukd5-MuiTabs-indicator)  {
+    background-color: rgb(0, 20, 55);
+}
+
+.driving-license-application-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tabs-container {
+    margin-bottom: 60px;
+}
+
+
+.person-container {
+    margin-bottom: 40px;
+}
+
+.person-container h2 {
+    margin-bottom: 10px;
+}
+
+
+.application-tab-label  {
+    display: inline-block;
+    margin-bottom: 15px;
+    margin-right: 5px;
+}
+
+.application-tab-content .create-button {
+    float: right;
+    height: 40px;
+}

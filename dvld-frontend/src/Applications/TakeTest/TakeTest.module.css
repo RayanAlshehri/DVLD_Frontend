@@ -1,0 +1,42 @@
+.take-test-modal h1 {
+    margin-bottom: 20px;
+}
+
+.take-test-modal p {
+    margin-bottom: 15px;
+}
+
+.radio-container {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.radio-container input{
+    margin-right: 7px;
+}
+
+.take-test-modal textarea {
+    margin-top: 5px;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    resize: none;
+}
+
+.buttons-container {
+    float: right;
+}
+
+.save-button {
+    margin-left: 5px;
+}
+
+.close-icon {
+    color: red;
+}
+
+.save-icon {
+    color: rgb(35, 35, 104);
+}

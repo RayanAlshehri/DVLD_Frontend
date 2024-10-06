@@ -1,0 +1,8 @@
+.inlineError-container {
+    display: inline;
+    margin: 3px;
+}
+
+.error-icon {
+    color: red;
+}

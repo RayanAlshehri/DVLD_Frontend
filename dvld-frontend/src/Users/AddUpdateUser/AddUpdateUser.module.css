@@ -1,0 +1,54 @@
+.add-update-user-modal h4 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.user-info-container {
+    margin-bottom: 20px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 18px 10px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+}
+
+.left-fields input {
+    margin: 5px 0 10px 0;
+}
+
+.change-password-button {
+    margin-top: 15px;
+    height: 40px;
+}
+
+.lock-icon {
+    color: darkslateblue;
+}
+
+.check-boxes-container {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 10px;
+}
+
+.check-boxes-container input {
+    vertical-align: middle;
+}
+
+.buttons-container {
+    float: right;
+}
+
+.save-button {
+    margin-left: 5px;
+}
+
+.close-icon {
+    color: red;
+}
+
+.save-icon {
+    color: rgb(35, 35, 104);
+}

@@ -1,0 +1,43 @@
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+}
+
+.message-icon {
+    font-size: 3rem;
+    margin-bottom: 30px;
+}
+
+.info-icon {
+    color: darkblue;
+}
+
+.error-icon {
+    color: red;
+}
+
+.success-icon {
+    color: darkgreen;
+}
+
+.confirm-icon {
+    color: darkblue;
+}
+
+.content-container p {
+    margin-bottom: 20px;
+}
+
+.content-container button {
+    width: 100%;
+}
+
+.content-container .confirmation-button {
+    width: 100px;
+}
+
+.content-container .cancel-button {
+    margin-right: 8px;
+}

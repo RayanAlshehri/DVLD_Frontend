@@ -1,0 +1,82 @@
+.issue-license-container h2 {
+    margin-bottom: 10px;
+}
+
+.application-sum-container {
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 18px 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.left-p {
+    justify-self: start;
+    height: fit-content;
+    margin-top: 5px;
+}
+
+.right-p {
+    justify-self: end;
+    margin-top: 5px;
+}
+
+.application-sum-container p {
+    margin-bottom: 10px;
+}
+
+.constraints-container {
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 35px;
+}
+
+.constraints-container input {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.constraints-container label {
+    vertical-align: middle;
+    margin-right: 15px;
+}
+
+.license-class-fee {
+    display: inline-block;
+    padding-top: 15px;
+}
+
+.issue-license-container a {
+    float: right;
+    padding-top: 15px;
+    margin-right: 10px;
+}
+
+.enabled-link {
+    color: blue; 
+    text-decoration: underline;
+}
+
+.enabled-link:visited {
+    color: blue; 
+    text-decoration: underline;
+}
+
+.disabled-link {
+    pointer-events: none;
+    color: gray;
+    cursor: default;
+    text-decoration: underline;
+}
+
+.issue-license-button {
+    padding: 10px;
+    float: right;
+}
+
+.button-icon {
+    margin-right: 5px;
+}

@@ -1,0 +1,125 @@
+.add-update-person-modal {
+    max-width: 450px;
+   
+}
+
+.fields-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.add-update-person-modal h1 {
+    margin-bottom: 20px;
+}
+
+hr {
+    margin-bottom: 30px;
+}
+
+.field-container {
+    margin-bottom: 40px;
+}
+
+.left-field {
+    margin-left: 10px;
+}
+
+.right-field {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.add-update-person-modal input {
+    margin: 0;
+}
+
+.required {
+    color: red;
+}
+
+.input-container {
+    margin-top: 5px;
+}
+
+.countries-select {
+    margin: 0;
+    height: 24px;
+    width: 175px;
+    border: 1px solid grey;
+}
+
+.radio-buttons-container {
+    display: flex;
+    margin: 0.5rem;
+}
+
+.add-update-person-modal .input-radio {
+    margin: 0 7px;
+}
+
+
+.right-field  .date-picker {
+    padding: 1px 0;
+    padding-block: 1px;
+    padding-inline: 2px;
+    display: flex;
+}
+
+select {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: whitesmoke;
+    border-radius: 3px;
+    border: 1px solid grey;
+}
+
+ :global(.react-datepicker-wrapper .react-datepicker__input-container .react-datepicker__calendar-icon){
+    padding: 3px 0 0 79px;
+}
+
+.address-field {
+    margin: 0 10px 40px 10px;
+    width: 100%;
+}
+
+.address-text-area-Container {
+    width: 100%;
+}
+
+.address-text-area { 
+    padding: 0;
+    width: 100%;
+    height: 70px;
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+
+.file-selector-container {
+    margin: 0 0 30px 10px;
+}
+
+.input-file {
+    margin: 0;
+}
+
+.buttons-container {
+    float: right;
+    margin-right: 10px;
+}
+
+.save-button {
+    margin-left: 5px;
+}
+
+.close-icon {
+    color: red;
+}
+
+.save-icon {
+    color: rgb(35, 35, 104);
+}

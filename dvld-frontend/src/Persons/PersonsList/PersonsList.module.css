@@ -1,0 +1,52 @@
+.persons-container  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+}
+
+.input-button-container {
+    width: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.national-number-field {
+    margin-top: 12px;
+    justify-self: left;
+    height: fit-content;
+}
+
+.input-button-container label {
+    font-size: 1.25rem;
+    margin-right: 5px;
+    margin-bottom: 0;
+}
+
+.input-button-container input {
+    margin: 0;
+    font-size: 1rem;
+    border: 1px solid gray;
+    height: 20px;
+}
+
+.persons-container .input-button-container button {
+    margin-left: auto;
+    margin-bottom: 10px;
+    justify-self: end;
+    height: 40px;
+    width: 70px;
+    padding: 0 15px;
+}
+
+.add-button-icon {
+    font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .table {
+        font-size: 14px;
+    }
+}  

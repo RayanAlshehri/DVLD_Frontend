@@ -1,0 +1,26 @@
+.find-person-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.find-person-container label {
+    padding-top: 7px;
+}
+
+.find-person-container button {
+    border-radius: 3px;
+    margin-left: 7px;
+    height: 24px;
+    width: 25px;
+    vertical-align: top;
+    padding: 0;
+}
+
+.find-icon {
+    margin-bottom: 2px;
+    align-self: center;
+    font-size: 1rem;
+    height: 15px;
+    color: rgb(35, 35, 104);
+}

@@ -1,0 +1,40 @@
+.book-appointment-modal h1 {
+    margin-bottom: 30px;
+}
+
+.book-appointment-modal p {
+    margin-bottom: 10px;
+}
+
+.book-appointment-modal .fee {
+    margin-bottom: 20px;
+}
+
+.book-appointment-modal label {
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.book-appointment-modal :global(.css-z3c6am-MuiFormControl-root-MuiTextField-root) {
+    margin-bottom: 40px;
+}
+.book-appointment-modal :global(.css-z3c6am-MuiFormControl-root-MuiTextField-root .css-1d3z3hw-MuiOutlinedInput-notchedOutline) {
+    border-color: gray;
+}
+
+.buttons-container {
+    float: right;
+    margin-right: 10px;
+}
+
+.save-button {
+    margin-left: 5px;
+}
+
+.close-icon {
+    color: red;
+}
+
+.save-icon {
+    color: rgb(35, 35, 104);
+}

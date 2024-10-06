@@ -1,0 +1,29 @@
+.person-info {
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background-color: whitesmoke;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 700px;
+    padding: 18px 10px 10px 10px;
+}
+
+
+.person-info .left-p {
+    justify-self: start;
+    margin-left: 0;
+    margin-bottom: 0;
+    height: fit-content;
+}
+
+.person-info .right-p {
+    justify-self: end;
+    margin-right: 0;
+    margin-bottom: 0;
+}
+
+.person-info p {
+    margin: 0 0 10px 0;
+}
