@@ -35,6 +35,7 @@ function AddUpdatePerson({identifier= null, onRequestClose, onPersonAddition, on
         phone: '',
         email: '',
         address: '',
+        image: null
     };
 
     const [loading, setLoading] = useState(true);
@@ -113,6 +114,22 @@ function AddUpdatePerson({identifier= null, onRequestClose, onPersonAddition, on
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const formData = new FormData();
+
+        formData.append('firstName', person.firstName);
+        formData.append('secondName', person.secondName);
+        formData.append('thirdName', person.thirdName);
+        formData.append('lastName', person.lastName);
+        formData.append('gender', person.gender);
+        formData.append('dateOfBirth', person.dateOfBirth.toISOString());
+        formData.append('nationalNumber', person.nationalNumber);
+        formData.append('countryID', person.countryID);   
+        formData.append('phone', person.phone);
+        formData.append('email', person.email);
+        formData.append('address', person.address);
+        formData.append('image', person.image);
+        
         try {
             if (mode === modalModes.add || (mode === modalModes.update && person.nationalNumber !== oldNationalNumber.current)) {
                 const response = await PersonsRequests.doesPersonExistByNationalNumber(person.nationalNumber);
@@ -121,21 +138,14 @@ function AddUpdatePerson({identifier= null, onRequestClose, onPersonAddition, on
                     return;
                 }
             }
-
-            const newPerson = {
-                ...person,
-                imagePath: null,
-            };
-
+       
             if (mode === modalModes.add) {
-                const response = await PersonsRequests.addNewPerson(newPerson);
-                console.log("Person added with ID " + response.data);
+                const response = await PersonsRequests.addNewPerson(formData);
                 onPersonAddition(response.data);
                 showMessageBox("Person added successfully", "success");
                 isAdded.current = true;
             } else {
-                await PersonsRequests.updatePerson(personId.current, newPerson);
-                console.log("Person updated");
+                await PersonsRequests.updatePerson(personId.current, formData);
                 showMessageBox("Person updated successfully", "success");
                 isUpdated.current = true;
             }
@@ -167,6 +177,13 @@ function AddUpdatePerson({identifier= null, onRequestClose, onPersonAddition, on
             gender,
         }));
     };
+
+    const handleImageChange = (e) => {
+        setPerson((prev) => ({
+            ...prev,
+            image: e.target.files[0]
+        }));
+    }
 
     function renderContent() {
         if (loading) {
@@ -333,7 +350,7 @@ function AddUpdatePerson({identifier= null, onRequestClose, onPersonAddition, on
                             <div className={styles['file-selector-container']}>
                                 <label>Photo</label>
                                 <div className={styles['input-container']}>
-                                    <input type="file" className={styles['input-file']} />
+                                    <input type="file" onChange={handleImageChange} className={styles['input-file']} />
                                 </div>
                             </div>
                         </div>
