@@ -189,7 +189,7 @@ function PersonsList() {
 
         try {
             await PersonsRequests.deletePersonByNationalNumber(nationalNumber);
-            console.log(`Person with national number ${nationalNumber} was deleted`);
+            showMessageBox("Person deleted successfully", "success");
             setSelectedRowId(selectedRowId - 1);
             setPersons(persons.filter(p => p.nationalNumber != nationalNumber));
         }
