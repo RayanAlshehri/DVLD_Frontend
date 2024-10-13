@@ -40,6 +40,8 @@ function AddUpdatePerson({identifier= null, onRequestClose, onPersonAddition, on
 
     const [loading, setLoading] = useState(true);
     const [person, setPerson] = useState(initialPersonState);
+    const [fileSelectorValue, setFileSelectorValue] = useState("");
+    const [imageURL, setImageURL] = useState("");
     const [countries, setCountries] = useState([]);
     const [fetchErrorOccured, setFetchErrorOccured] = useState(false);
     const personId = useRef(-1);
@@ -103,7 +105,12 @@ function AddUpdatePerson({identifier= null, onRequestClose, onPersonAddition, on
             phone: personData.phone,
             email: personData.email,
             address: personData.address,
+            image: null
         });
+
+        if (personData.imageURL)
+            setImageURL(`data:image/png;base64,${personData.imageURL}`);
+
         personId.current = personData.id;
         oldNationalNumber.current = personData.nationalNumber;
     }
@@ -119,16 +126,25 @@ function AddUpdatePerson({identifier= null, onRequestClose, onPersonAddition, on
 
         formData.append('firstName', person.firstName);
         formData.append('secondName', person.secondName);
-        formData.append('thirdName', person.thirdName);
+
+        if (person.thirdName)
+            formData.append('thirdName', person.thirdName);
+
         formData.append('lastName', person.lastName);
         formData.append('gender', person.gender);
         formData.append('dateOfBirth', person.dateOfBirth.toISOString());
         formData.append('nationalNumber', person.nationalNumber);
         formData.append('countryID', person.countryID);   
         formData.append('phone', person.phone);
-        formData.append('email', person.email);
+
+        if (person.email)
+            formData.append('email', person.email);
+
         formData.append('address', person.address);
-        formData.append('image', person.image);
+
+        if (person.image)
+            formData.append('image', person.image);
+
         
         try {
             if (mode === modalModes.add || (mode === modalModes.update && person.nationalNumber !== oldNationalNumber.current)) {
@@ -139,12 +155,13 @@ function AddUpdatePerson({identifier= null, onRequestClose, onPersonAddition, on
                 }
             }
        
-            if (mode === modalModes.add) {
+            if (mode === modalModes.add) {              
                 const response = await PersonsRequests.addNewPerson(formData);
                 onPersonAddition(response.data);
                 showMessageBox("Person added successfully", "success");
                 isAdded.current = true;
-            } else {
+            } else {            
+                formData.append('deleteImage', person.image == null);   
                 await PersonsRequests.updatePerson(personId.current, formData);
                 showMessageBox("Person updated successfully", "success");
                 isUpdated.current = true;
@@ -179,10 +196,34 @@ function AddUpdatePerson({identifier= null, onRequestClose, onPersonAddition, on
     };
 
     const handleImageChange = (e) => {
+        const image = e.target.files[0];
+
         setPerson((prev) => ({
             ...prev,
-            image: e.target.files[0]
+            image: image
         }));
+
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+            setImageURL(reader.result);
+        };
+
+        reader.readAsDataURL(image);
+
+        setFileSelectorValue(e.target.value);
+    }
+
+    const handleRemoveImageClick = (e) => {
+        e.preventDefault();
+
+        setPerson((prev) => ({
+            ...prev,
+            image: null
+        }));
+
+        setImageURL("");
+        setFileSelectorValue("");
     }
 
     function renderContent() {
@@ -350,10 +391,28 @@ function AddUpdatePerson({identifier= null, onRequestClose, onPersonAddition, on
                             <div className={styles['file-selector-container']}>
                                 <label>Photo</label>
                                 <div className={styles['input-container']}>
-                                    <input type="file" onChange={handleImageChange} className={styles['input-file']} />
-                                </div>
+                                    <input type="file" value={fileSelectorValue} onChange={handleImageChange} className={styles['input-file']} />
+                                </div>                            
                             </div>
+                            
+                                <div className={styles["image-container"]}>
+                                    {(person.gender || imageURL) &&
+                                    <img src={
+                                        imageURL ? imageURL
+                                            : person.gender == 'M' ? '../../public/Images/Person_Male.png'
+                                                : person.gender == 'F' ? '../../public/Images/Person_Female.png'
+                                                    : ''} />
+                                    }
+
+                                </div>
+                                
+                            
                         </div>
+
+                        {imageURL && <a href="#" onClick={handleRemoveImageClick} className={styles["remove-image"]}>Remove Image</a>}
+
+                        <br />
+
                         <div className={styles['buttons-container']}>
                             <button type="button" onClick={handleClose} className="modal-button">
                                 <FontAwesomeIcon icon={faCircleXmark} className={`icon ${styles['close-icon']}`} />
