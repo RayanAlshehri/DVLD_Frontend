@@ -100,15 +100,35 @@ select {
 }
 
 .file-selector-container {
-    margin: 0 0 30px 10px;
+    margin: 0 20px 30px 10px;
 }
 
 .input-file {
     margin: 0;
 }
 
+.image-container {
+    display: inline-block;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    width: 150px;
+    height: 150px;
+}
+
+.image-container img {
+    width: 150px;
+    height: 150px;
+}
+
+.remove-image {
+    float: right;
+    margin-right: 35px;
+}
+
 .buttons-container {
     float: right;
+    margin-top: 40px;
     margin-right: 10px;
 }
 
