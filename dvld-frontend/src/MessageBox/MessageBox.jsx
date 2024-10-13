@@ -13,11 +13,20 @@ const messageTypes = {
     confirmation: 'confirmation'
 };
 
-function MessageBox({message, messageType, onClose}) {
+function MessageBox({message, messageType, onConfirmation, onClose}) {
 
     const handleCloseRequest = () => {
         onClose?.();
     };
+
+    const handleConfirmationButtonClick = (e) => {
+        if (e.target.id == "noButton")
+            onConfirmation("no");
+        else
+            onConfirmation("yes");
+
+            onClose?.();
+    }
 
     const getContent = () => {
         switch (messageType) {
@@ -51,8 +60,8 @@ function MessageBox({message, messageType, onClose}) {
                         <FontAwesomeIcon icon={faCircleQuestion} className={`${styles['message-icon']} ${styles['confirm-icon']}`}/>
                         <p>{message}</p>
                         <div>
-                            <button onClick={handleCloseRequest} className={`modal-button ${styles['confirmation-button']} ${styles['cancel-button']}`}>No</button>
-                            <button onClick={handleCloseRequest} className={`modal-button ${styles['confirmation-button']}`}>Yes</button>
+                            <button id="noButton" onClick={handleConfirmationButtonClick} className={`modal-button ${styles['confirmation-button']} ${styles['cancel-button']}`}>No</button>
+                            <button id="yesButton" onClick={handleConfirmationButtonClick} className={`modal-button ${styles['confirmation-button']}`}>Yes</button>
                         </div>
                     </>
                 )
