@@ -7,11 +7,14 @@ import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import PersonInfoModal from "../PersonInfoModal/PersonInfoModal"; 
 import AddUpdatePerson from "../AddUpdatePerson/AddUpdatePerson"; 
+import useMessageBox from '../../Global/MessageBox';
+import MessageBox from '../../MessageBox/MessageBox';
 
 
 function PersonContextMenu({nationalNumber, cursorPosition, callBacks}) {
     const [personInfoVisible, setPersonInfoVisible] = useState(false);
     const [updatePersonModalVisible, setUpdatePersonModalVisible] = useState(false);
+    const { messageBoxVisible, messageBoxMessage, messageBoxType, showMessageBox, handleMessageBoxClose } = useMessageBox();
 
     const handlePersonInfoModalClose = () => {
         setPersonInfoVisible(false);
@@ -19,6 +22,11 @@ function PersonContextMenu({nationalNumber, cursorPosition, callBacks}) {
 
     const handleUpdatePersonModalClose = () => {
         setUpdatePersonModalVisible(false)
+    }
+
+    const hadnleDeletePersonConfirmation = (answer) => {
+        if (answer == "yes")
+            callBacks.onDeleteRequest();
     }
     
     return (
@@ -33,7 +41,7 @@ function PersonContextMenu({nationalNumber, cursorPosition, callBacks}) {
                         <FontAwesomeIcon icon={faPenToSquare} />
                         <li>Update Person</li>
                     </div>
-                    <div onClick={() => callBacks.onDeleteRequest()} className="list-item-container">
+                    <div onClick={() => showMessageBox("Are you sure that you want to delete this person?", "confirmation")} className="list-item-container">
                         <FontAwesomeIcon icon={faUserMinus} />
                         <li>Delete Person</li>
                     </div>
@@ -63,6 +71,8 @@ function PersonContextMenu({nationalNumber, cursorPosition, callBacks}) {
                 />
             )
             }
+
+            {messageBoxVisible && <MessageBox message={messageBoxMessage.current} messageType={messageBoxType.current} onConfirmation={hadnleDeletePersonConfirmation} onClose={handleMessageBoxClose} />}
         </>
     )
 
