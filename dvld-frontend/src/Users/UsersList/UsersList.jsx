@@ -135,10 +135,11 @@ function UsersList() {
             await deleteUser(userId);
             setSelectedRowId(selectedRowId - 1);
             setUsers(users.filter(u => u.userID != userId))
+            showMessageBox("User deleted successfully", "success");
         }
         catch(error) {
             console.log(error);
-            showMessageBox("Failed to delete user", "error");
+            showMessageBox("Failed to delete user because there is data linked to it", "error");
         }
     }
 
