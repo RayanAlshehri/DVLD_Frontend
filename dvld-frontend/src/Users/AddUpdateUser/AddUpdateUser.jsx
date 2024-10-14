@@ -328,7 +328,7 @@ function AddUpdateUser({ userId = 0, onUserAdded, onUserUpdate, onRequestClose }
     }
 
     return (
-        <div onClick={e => e.stopPropagation()}>
+        <div>
             <Modal
                 isOpen={true}
                 onRequestClose={() => onRequestClose()}

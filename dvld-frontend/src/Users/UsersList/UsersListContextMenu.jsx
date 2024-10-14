@@ -72,6 +72,18 @@ function UsersListContextMenu({userId, cursorPosition, onUserUpdate, onDeleteReq
                         </>}
                 </ul>
 
+                {updateUserComponentVisible &&
+                    (<AddUpdateUser
+                        userId={userId}
+                        onUserUpdate={() => onUserUpdate?.()}
+                        onRequestClose={() => setUpdateUserComponentVisible(false)} />)}
+
+                {userInfoVisible &&
+                    <UserInfo
+                        userId={userId}
+                        onRequestClose={() => setUserInfoVisible(false)} />
+                }
+
                 {messageBoxVisible &&
                     <MessageBox
                         message={messageBoxMessage.current}
@@ -79,19 +91,7 @@ function UsersListContextMenu({userId, cursorPosition, onUserUpdate, onDeleteReq
                         onConfirmation={hadnleDeleteUserConfirmation}
                         onClose={handleMessageBoxClose} />
                 }
-            </div>
-
-            {updateUserComponentVisible &&
-                (<AddUpdateUser
-                    userId={userId}
-                    onUserUpdate={() => onUserUpdate?.()}
-                    onRequestClose={() => setUpdateUserComponentVisible(false)} />)}
-
-            {userInfoVisible &&
-                <UserInfo
-                    userId={userId}
-                    onRequestClose={() => setUserInfoVisible(false)} />
-            }
+            </div>        
         </>
     )
 }

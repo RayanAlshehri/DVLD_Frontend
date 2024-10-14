@@ -56,7 +56,7 @@ function UserInfo({userId, onRequestClose}) {
     }
 
     return (
-        <div onClick={(e) => e.stopPropagation()}>
+        <div>
             <Modal
                 isOpen={true}
                 onRequestClose={() => onRequestClose()}
