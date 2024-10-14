@@ -57,22 +57,29 @@ function PersonContextMenu({nationalNumber, cursorPosition, callBacks}) {
                         <li> Send Email</li>
                     </div>
                 </ul>
+
+
+                {personInfoVisible && (
+                    <PersonInfoModal identifier={nationalNumber} modalProps={{ isOpen: personInfoVisible, onRequestClose: handlePersonInfoModalClose }} />
+                )}
+
+                {updatePersonModalVisible && (
+                    <AddUpdatePerson
+                        identifier={nationalNumber}
+                        onRequestClose={handleUpdatePersonModalClose}
+                        onPersonUpdate={callBacks.onPersonUpdate}
+                    />
+                )
+                }
+
+                {messageBoxVisible &&
+                    <MessageBox
+                        message={messageBoxMessage.current}
+                        messageType={messageBoxType.current}
+                        onConfirmation={hadnleDeletePersonConfirmation}
+                        onClose={handleMessageBoxClose} />
+                }
             </div>
-
-            {personInfoVisible && (
-                <PersonInfoModal identifier={nationalNumber} modalProps={{ isOpen: personInfoVisible, onRequestClose: handlePersonInfoModalClose }} />
-            )}
-
-            {updatePersonModalVisible && (
-                <AddUpdatePerson
-                    identifier={nationalNumber}
-                    onRequestClose={handleUpdatePersonModalClose}
-                    onPersonUpdate={callBacks.onPersonUpdate}
-                />
-            )
-            }
-
-            {messageBoxVisible && <MessageBox message={messageBoxMessage.current} messageType={messageBoxType.current} onConfirmation={hadnleDeletePersonConfirmation} onClose={handleMessageBoxClose} />}
         </>
     )
 

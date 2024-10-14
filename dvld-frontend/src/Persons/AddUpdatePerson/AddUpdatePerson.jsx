@@ -430,7 +430,7 @@ function AddUpdatePerson({identifier= null, onRequestClose, onPersonAddition, on
     }
 
     return (
-        <div onClick={(e) => e.stopPropagation()}>
+        <div>
             <Modal
                 isOpen={true}
                 onRequestClose={onRequestClose}

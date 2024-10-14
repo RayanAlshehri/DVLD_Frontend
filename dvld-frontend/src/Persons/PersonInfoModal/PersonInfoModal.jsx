@@ -11,7 +11,7 @@ function PersonInfoModal({identifier, modalProps}) {
         return <MessageBox message="Failed to fetch person information" messageType="error"/>
 
     return (
-        <div onClick={(e) => e.stopPropagation()}> 
+        <div> 
             <Modal
                 isOpen={modalProps.isOpen} className={styles['person-info-modal']}
                 onRequestClose={modalProps.onRequestClose}
