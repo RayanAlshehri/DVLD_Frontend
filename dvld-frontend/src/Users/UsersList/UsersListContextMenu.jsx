@@ -8,12 +8,15 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import AddUpdateUser from "../AddUpdateUser/AddUpdateUser";
 import UserInfo from "../UserInfo/UserInfo";
 import { getUserById } from "../../APIRequests/UsersRequests";
+import useMessageBox from '../../Global/MessageBox';
+import MessageBox from '../../MessageBox/MessageBox';
 
 
 function UsersListContextMenu({userId, cursorPosition, onUserUpdate, onDeleteRequest}) {
     const [user, setUser] = useState(null);
     const [userInfoVisible, setUserInfoVisible] = useState(false);
     const [updateUserComponentVisible, setUpdateUserComponentVisible] = useState(false);
+    const { messageBoxVisible, messageBoxMessage, messageBoxType, showMessageBox, handleMessageBoxClose } = useMessageBox();
 
     useEffect(() => {
         async function getUser() {
@@ -29,6 +32,11 @@ function UsersListContextMenu({userId, cursorPosition, onUserUpdate, onDeleteReq
         getUser();
     }, [])
 
+    const hadnleDeleteUserConfirmation = (answer) => {
+        if (answer == "yes")
+           onDeleteRequest();
+    }
+
 
     return (
         <>
@@ -42,7 +50,7 @@ function UsersListContextMenu({userId, cursorPosition, onUserUpdate, onDeleteReq
                         <FontAwesomeIcon icon={faPenToSquare} />
                         <li>Update User</li>
                     </div>
-                    <div onClick={() => onDeleteRequest?.()} className="list-item-container">
+                    <div onClick={() => showMessageBox("Are you sure that you want to delete this user?", "confirmation")} className="list-item-container">
                         <FontAwesomeIcon icon={faUserMinus} />
                         <li>Delete User</li>
                     </div>
@@ -63,6 +71,14 @@ function UsersListContextMenu({userId, cursorPosition, onUserUpdate, onDeleteReq
                                 </div>}
                         </>}
                 </ul>
+
+                {messageBoxVisible &&
+                    <MessageBox
+                        message={messageBoxMessage.current}
+                        messageType={messageBoxType.current}
+                        onConfirmation={hadnleDeleteUserConfirmation}
+                        onClose={handleMessageBoxClose} />
+                }
             </div>
 
             {updateUserComponentVisible &&
