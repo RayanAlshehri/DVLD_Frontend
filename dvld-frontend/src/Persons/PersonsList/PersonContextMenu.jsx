@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
@@ -9,12 +9,28 @@ import PersonInfoModal from "../PersonInfoModal/PersonInfoModal";
 import AddUpdatePerson from "../AddUpdatePerson/AddUpdatePerson"; 
 import useMessageBox from '../../Global/MessageBox';
 import MessageBox from '../../MessageBox/MessageBox';
+import { getPersonByNationalNumber } from "../../APIRequests/PersonsRequests";
 
 
 function PersonContextMenu({nationalNumber, cursorPosition, callBacks}) {
+    const [person, setPerson] = useState(null);
     const [personInfoVisible, setPersonInfoVisible] = useState(false);
     const [updatePersonModalVisible, setUpdatePersonModalVisible] = useState(false);
     const { messageBoxVisible, messageBoxMessage, messageBoxType, showMessageBox, handleMessageBoxClose } = useMessageBox();
+
+    useEffect(() => {
+        async function getPerson() {
+            try {
+                const response = await getPersonByNationalNumber(nationalNumber);
+                setPerson(response.data);
+            }
+            catch (error) {
+                console.log(error);
+            }
+        }
+
+        getPerson();
+    }, [])
 
     const handlePersonInfoModalClose = () => {
         setPersonInfoVisible(false);
@@ -48,14 +64,19 @@ function PersonContextMenu({nationalNumber, cursorPosition, callBacks}) {
 
                     <hr className="context-menu-separator" />
 
-                    <div className="list-item-container">
-                        <FontAwesomeIcon icon={faPhone} />
-                        <li> Call</li>
-                    </div>
-                    <div className="list-item-container">
-                        <FontAwesomeIcon icon={faEnvelope} />
-                        <li> Send Email</li>
-                    </div>
+                    {person &&
+                        <>
+                            <div className="list-item-container" onClick={() => window.location.href = `tel:${person.phone}`}>
+                                <FontAwesomeIcon icon={faPhone} />
+                                <li>Call</li>
+                            </div>
+
+                        {person.email &&
+                            <div className="list-item-container" onClick={() => window.location.href = `mailto:${person.email}`}>
+                                <FontAwesomeIcon icon={faEnvelope} />
+                                <li>Send Email</li>
+                            </div>}
+                        </>}
                 </ul>
 
 
