@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
@@ -7,11 +7,28 @@ import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import AddUpdateUser from "../AddUpdateUser/AddUpdateUser";
 import UserInfo from "../UserInfo/UserInfo";
+import { getUserById } from "../../APIRequests/UsersRequests";
 
 
 function UsersListContextMenu({userId, cursorPosition, onUserUpdate, onDeleteRequest}) {
+    const [user, setUser] = useState(null);
     const [userInfoVisible, setUserInfoVisible] = useState(false);
     const [updateUserComponentVisible, setUpdateUserComponentVisible] = useState(false);
+
+    useEffect(() => {
+        async function getUser() {
+            try {
+                const response = await getUserById(userId);
+                setUser(response.data);
+            }
+            catch (error) {
+                console.log(error);
+            }
+        }
+
+        getUser();
+    }, [])
+
 
     return (
         <>
@@ -32,14 +49,19 @@ function UsersListContextMenu({userId, cursorPosition, onUserUpdate, onDeleteReq
 
                     <hr className="context-menu-separator" />
 
-                    <div className="list-item-container">
-                        <FontAwesomeIcon icon={faPhone} />
-                        <li> Call</li>
-                    </div>
-                    <div className="list-item-container">
-                        <FontAwesomeIcon icon={faEnvelope} />
-                        <li> Send Email</li>
-                    </div>
+                    {user &&
+                        <>
+                            <div className="list-item-container" onClick={() => window.location.href = `tel:${user.person.phone}`}>
+                                <FontAwesomeIcon icon={faPhone} />
+                                <li>Call</li>
+                            </div>
+
+                            {user.person.email &&
+                                <div className="list-item-container" onClick={() => window.location.href = `mailto:${user.person.email}`}>
+                                    <FontAwesomeIcon icon={faEnvelope} />
+                                    <li>Send Email</li>
+                                </div>}
+                        </>}
                 </ul>
             </div>
 
