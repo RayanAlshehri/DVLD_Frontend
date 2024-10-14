@@ -24,18 +24,24 @@ function Login({onLogin}) {
         }
     }
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleLoginClick();
+        }
+    };
+
     return (
         <div className={styles['login-container']}>
             <h1 className={styles['login-element']}>Login</h1>
             
             <div className={styles['input-container']}>
                 <FontAwesomeIcon icon={faUser} className={styles['input-icon']} />
-                <input type="text" id='username' placeholder="Username"/>
+                <input type="text" id='username' placeholder="Username" onKeyDown={handleKeyDown}/>
             </div>
 
             <div className={styles['input-container']}>
                 <FontAwesomeIcon icon={faKey} className={styles['input-icon']} />
-                <input type="password" id='password' placeholder="Password"/>
+                <input type="password" id='password' placeholder="Password" onKeyDown={handleKeyDown} />
             </div>
 
             <button onClick={handleLoginClick} className='main-page-button'>Login</button>
