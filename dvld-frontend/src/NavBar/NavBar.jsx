@@ -10,6 +10,8 @@ function NavBar({showNavLinks}) {
     const {user} = useUser();
     const navigate = useNavigate();
     const location = useLocation();
+    const applicationsMenuItems = [{text: "New", subItems: [{text: "Driving License", subItems: [{text: "Local License", subItems: [], onClick: handleLocalLicenseMenuItemClick}]}]}, 
+    {text: "Manage Applications", subItems: [], onClick: handleManageApplicationsClick}]
 
     useEffect(() => {
         if (location.pathname.includes("persons"))
@@ -36,12 +38,11 @@ function NavBar({showNavLinks}) {
         }
     }
 
-    const handleLocalLicenseMenuItemClick = () => {
+    function handleLocalLicenseMenuItemClick() {
         navigate("/app/local-license-application");
     }
 
-    const handleManageApplicationsClick = () => {
-        console.log("Manage applications clicked");
+    function handleManageApplicationsClick() {      
         navigate("/app/manage-application");
     }
 
@@ -56,7 +57,7 @@ function NavBar({showNavLinks}) {
                                 Applications
                                 {applicationsSubMenuVisible && 
                                 <UpperMenuSubMenu 
-                                menuItems={[{text: "New", subItems: [{text: "Driving License", subItems: [{text: "Local License", subItems: [], onClick: handleLocalLicenseMenuItemClick}]}]}, {text: "Manage Applications", subItems: [], onClick: handleManageApplicationsClick}]} />}
+                                menuItems={applicationsMenuItems} />}
                             </li>
                             
                             <li className={activeItem == "Manage" ? styles.activeMainMenuItem : ""} onClick={() => handleItemClick("Manage")}>
