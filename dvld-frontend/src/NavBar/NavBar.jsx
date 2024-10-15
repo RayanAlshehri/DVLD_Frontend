@@ -18,6 +18,8 @@ function NavBar({showNavLinks}) {
             setActiveItem("Persons");
         else if (location.pathname.includes("users"))
             setActiveItem("Users");
+        else if (location.pathname.includes("applications"))
+            setActiveItem("Applications");
         else
             setActiveItem("");
         
@@ -42,7 +44,7 @@ function NavBar({showNavLinks}) {
         navigate("/app/applications/local-license-application");
     }
 
-    function handleManageApplicationsClick() {      
+    function handleManageApplicationsClick() {   
         navigate("/app/applications/manage-application");
     }
 
@@ -53,7 +55,7 @@ function NavBar({showNavLinks}) {
                 {showNavLinks && (
                     <>
                         <ul>
-                            <li onMouseOver={() => setApplicationsSubMenuVisible(true)} onMouseLeave={() => setApplicationsSubMenuVisible(false)}>
+                            <li onMouseOver={() => setApplicationsSubMenuVisible(true)} onMouseLeave={() => setApplicationsSubMenuVisible(false)} className={activeItem == "Applications" ? styles.activeMainMenuItem : ""}>
                                 Applications
                                 {applicationsSubMenuVisible && 
                                 <UpperMenuSubMenu 
