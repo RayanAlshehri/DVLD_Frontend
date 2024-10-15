@@ -26,20 +26,6 @@ function NavBar({showNavLinks}) {
     }, [location])
     
 
-    const handleItemClick = (item) => {
-        setActiveItem(item);
-
-        switch (item) {
-            case "Persons":
-                navigate("/app/persons");
-                break;
-
-            case "Users":
-                navigate("/app/users");
-                break;
-        }
-    }
-
     function handleLocalLicenseMenuItemClick() {
         navigate("/app/applications/local-license-application");
     }
@@ -62,13 +48,13 @@ function NavBar({showNavLinks}) {
                                 menuItems={applicationsMenuItems} />}
                             </li>
                             
-                            <li className={activeItem == "Manage" ? styles.activeMainMenuItem : ""} onClick={() => handleItemClick("Manage")}>
+                            <li className={activeItem == "Manage" ? styles.activeMainMenuItem : ""} >
                                 Manage</li>
-                            <li className={activeItem == "Drivers" ? styles.activeMainMenuItem : ""} onClick={() => handleItemClick("Drivers")}>
+                            <li className={activeItem == "Drivers" ? styles.activeMainMenuItem : ""} >
                                 Drivers</li>
-                            <li className={activeItem == "Persons" ? styles.activeMainMenuItem : ""} onClick={() => handleItemClick("Persons")}>
+                            <li className={activeItem == "Persons" ? styles.activeMainMenuItem : ""} onClick={() => navigate("/app/persons")}>
                                 Persons</li>
-                            <li className={activeItem == "Users" ? styles.activeMainMenuItem : ""} onClick={() => handleItemClick("Users")}>
+                            <li className={activeItem == "Users" ? styles.activeMainMenuItem : ""} onClick={() => navigate("/app/users")}>
                                 Users</li>
                         </ul>
                         <p>Welcome {user.person.firstName}</p>
