@@ -13,7 +13,7 @@ function ApplicationsListContextMenu({applicationId, applicationStatus, cursorPo
     const handleUpdateApplicationClick = async () => {
         try {
             const response = await getApplicationByApplicationId(applicationId);
-            navigate(`/app/local-license-application/${response.data.localLicenseApplicationID}`)
+            navigate(`/app/applications/local-license-application/${response.data.localLicenseApplicationID}`)
         }
         catch (error) {
             console.log(error);

@@ -32,15 +32,15 @@ const router = createBrowserRouter([
             element: <UsersList />,
           },
           {
-            path: "local-license-application",
+            path: "applications/local-license-application",
             element: <LocalLicenseApplication key="add" />
           },
           {
-            path: "local-license-application/:localLicenseApplicationId",
+            path: "applications/local-license-application/:localLicenseApplicationId",
             element: <LocalLicenseApplication key="update" />
           },
           {
-            path: "manage-application",
+            path: "applications/manage-application",
             element: <ApplicationList />
           },
         ]

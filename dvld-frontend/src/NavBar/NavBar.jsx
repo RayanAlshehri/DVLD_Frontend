@@ -39,11 +39,11 @@ function NavBar({showNavLinks}) {
     }
 
     function handleLocalLicenseMenuItemClick() {
-        navigate("/app/local-license-application");
+        navigate("/app/applications/local-license-application");
     }
 
     function handleManageApplicationsClick() {      
-        navigate("/app/manage-application");
+        navigate("/app/applications/manage-application");
     }
 
     return (
