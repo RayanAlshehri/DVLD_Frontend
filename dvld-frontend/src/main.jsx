@@ -10,6 +10,7 @@ import ProtectedRoute from './ProtectedRoute.jsx';
 import UsersList from './Users/UsersList/UsersList.jsx';
 import LocalLicenseApplication from './Applications/LocalDrivingLicenseApplication/LocalDrivingLicenseApplication.jsx';
 import ApplicationList from './Applications/ApplicationsList/ApplicationsList.jsx';
+import ServicesList from './Manage/ServicesList/ServicesList.jsx';
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
             path: "applications/manage-application",
             element: <ApplicationList />
           },
+          {
+            path: "manage/services",
+            element: <ServicesList />
+          }
         ]
       },
     ]
