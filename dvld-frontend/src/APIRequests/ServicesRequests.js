@@ -7,6 +7,14 @@ const api = axios.create({
     },
 });
 
+export const getAllServices = () => {
+    return api.get();
+}
+
 export const getService = (serviceId) => {
     return api.get(`/${serviceId}`);
+}
+
+export const updateService = (serviceId ,service) => {
+    return api.put(`/${serviceId}`, service);
 }
