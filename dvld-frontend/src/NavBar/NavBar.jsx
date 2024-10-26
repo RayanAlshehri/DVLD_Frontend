@@ -7,11 +7,14 @@ import UpperMenuSubMenu from "../UpperMenuSubMenu/UpperMenuSubMenu.jsx";
 function NavBar({showNavLinks}) {
     const [activeItem, setActiveItem] = useState("");
     const [applicationsSubMenuVisible, setApplicationsSubMenuVisible] = useState(false);
+    const [manageSubMenuVisible, setManageSubMenuVisible] = useState(false);
     const {user} = useUser();
     const navigate = useNavigate();
     const location = useLocation();
     const applicationsMenuItems = [{text: "New", subItems: [{text: "Driving License", subItems: [{text: "Local License", subItems: [], onClick: handleLocalLicenseMenuItemClick}]}]}, 
     {text: "Manage Applications", subItems: [], onClick: handleManageApplicationsClick}]
+    const manageMenuItems = [{text: "Services", subItems: [], onClick: () => navigate("/app/manage/services")},
+    {text: "Test Types", subItems: []}, {text: "License Classes", subItems: []}]
 
     useEffect(() => {
         if (location.pathname.includes("persons"))
@@ -20,6 +23,8 @@ function NavBar({showNavLinks}) {
             setActiveItem("Users");
         else if (location.pathname.includes("applications"))
             setActiveItem("Applications");
+        else if (location.pathname.includes("manage"))
+            setActiveItem("Manage");
         else
             setActiveItem("");
         
@@ -43,13 +48,17 @@ function NavBar({showNavLinks}) {
                         <ul>
                             <li onMouseOver={() => setApplicationsSubMenuVisible(true)} onMouseLeave={() => setApplicationsSubMenuVisible(false)} className={activeItem == "Applications" ? styles.activeMainMenuItem : ""}>
                                 Applications
-                                {applicationsSubMenuVisible && 
-                                <UpperMenuSubMenu 
-                                menuItems={applicationsMenuItems} />}
+                                {applicationsSubMenuVisible &&
+                                    <UpperMenuSubMenu
+                                        menuItems={applicationsMenuItems} />}
                             </li>
-                            
-                            <li className={activeItem == "Manage" ? styles.activeMainMenuItem : ""} >
-                                Manage</li>
+
+                            <li onMouseOver={() => setManageSubMenuVisible(true)} onMouseLeave={() => setManageSubMenuVisible(false)} className={activeItem == "Manage" ? styles.activeMainMenuItem : ""} >
+                                Manage
+                                {manageSubMenuVisible &&
+                                    <UpperMenuSubMenu
+                                        menuItems={manageMenuItems} />}
+                            </li>
                             <li className={activeItem == "Drivers" ? styles.activeMainMenuItem : ""} >
                                 Drivers</li>
                             <li className={activeItem == "Persons" ? styles.activeMainMenuItem : ""} onClick={() => navigate("/app/persons")}>
