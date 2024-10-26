@@ -182,7 +182,7 @@ function ApplicationList() {
     }
 
     return (
-        <div className="page-content-container">
+        <>
             <h1>Applications List</h1>
             {!loading && !fetchErrorOccured && 
                 <div className={styles["filter-button-container"]}>
@@ -216,7 +216,7 @@ function ApplicationList() {
             </div>
 
             {messageBoxVisible && <MessageBox message={messageBoxMessage.current} messageType={messageBoxType.current} onClose={handleMessageBoxClose} />}
-        </div>
+        </>
        
     )
 }

@@ -201,7 +201,7 @@ function PersonsList() {
 
 
     return (
-        <div className={styles[`persons-container`]}>
+        <>
             <h1>Persons List</h1>
 
             {isListFetched.current && (
@@ -288,7 +288,7 @@ function PersonsList() {
             )}
 
             {messageBoxVisible && <MessageBox message={messageBoxMessage.current} messageType={messageBoxType.current} onClose={handleMessageBoxClose} />}
-        </div>
+        </>
     );
 }
 

@@ -70,7 +70,7 @@ function NavBar({showNavLinks}) {
                     </>
                 )}
             </nav>
-            <div className="page-content-container ">
+            <div className="page-content-container">
                 <Outlet />
             </div>
         </div>

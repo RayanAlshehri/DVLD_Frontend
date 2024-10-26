@@ -211,7 +211,7 @@ function UsersList() {
     }
 
     return (
-        <div className="page-content-container">
+        <>
             <h1>Users List</h1>
             <div className={styles["filter-button-container"]}>
                 <div className={styles["filter-container"]}>
@@ -245,7 +245,7 @@ function UsersList() {
 
             {addUserVisible && <AddUpdateUser onUserAdded={hadnleUserAdded} onRequestClose={() => setAddUserVisible(false)} />}
             {messageBoxVisible && <MessageBox message={messageBoxMessage.current} messageType={messageBoxType.current} onClose={handleMessageBoxClose} />}
-        </div>
+        </>
     )
 }
 

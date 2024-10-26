@@ -93,7 +93,7 @@ function ServicesList() {
 
 
     return (
-        <div className="page-content-container">
+        <>
             <h1>Services</h1>
             
             <div  onContextMenu={handleContextMenu} onClick={handleTabelContainerClick} className={`table-container ${loading ? "table-container-loading" : ""}`}>
@@ -108,7 +108,7 @@ function ServicesList() {
             </div>
 
             {messageBoxVisible && <MessageBox message={messageBoxMessage.current} messageType={messageBoxType.current} onClose={handleMessageBoxClose} />}
-        </div>
+        </>
     )
 }
 
