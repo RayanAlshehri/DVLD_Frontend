@@ -7,6 +7,14 @@ const api = axios.create({
     },
 });
 
+export const getAllTestTypes = () => {
+    return api.get();
+}
+
 export const getTestType = (testTypeId) => {
     return api.get(`/${testTypeId}`);
+}
+
+export const updateTestType = (testTypeId ,testType) => {
+    return api.put(`/${testTypeId}`, testType);
 }
