@@ -11,6 +11,8 @@ import UsersList from './Users/UsersList/UsersList.jsx';
 import LocalLicenseApplication from './Applications/LocalDrivingLicenseApplication/LocalDrivingLicenseApplication.jsx';
 import ApplicationList from './Applications/ApplicationsList/ApplicationsList.jsx';
 import ServicesList from './Manage/ServicesList/ServicesList.jsx';
+import TestTypesList from './Manage/TestTypesList/TestTypesList.jsx';
+import LicenseClassesList from './Manage/LicenseClassesList/LicenseClassesList.jsx';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +49,14 @@ const router = createBrowserRouter([
           {
             path: "manage/services",
             element: <ServicesList />
+          },
+          {
+            path: "manage/test-types",
+            element: <TestTypesList />
+          },
+          {
+            path: "manage/license-classes",
+            element: <LicenseClassesList />
           }
         ]
       },
