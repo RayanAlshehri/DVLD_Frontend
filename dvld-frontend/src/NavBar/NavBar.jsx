@@ -14,7 +14,7 @@ function NavBar({showNavLinks}) {
     const applicationsMenuItems = [{text: "New", subItems: [{text: "Driving License", subItems: [{text: "Local License", subItems: [], onClick: handleLocalLicenseMenuItemClick}]}]}, 
     {text: "Manage Applications", subItems: [], onClick: handleManageApplicationsClick}]
     const manageMenuItems = [{text: "Services", subItems: [], onClick: () => navigate("/app/manage/services")},
-    {text: "Test Types", subItems: []}, {text: "License Classes", subItems: []}]
+    {text: "Test Types", subItems: [], onClick: () => navigate("/app/manage/test-types")}, {text: "License Classes", subItems: [], onClick: () => navigate("/app/manage/license-classes")}]
 
     useEffect(() => {
         if (location.pathname.includes("persons"))
