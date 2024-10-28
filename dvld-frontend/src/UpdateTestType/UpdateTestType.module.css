@@ -1,0 +1,30 @@
+.update-test-type-modal h1 {
+    margin-bottom: 20px;
+}
+
+.update-test-type-modal label {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.update-test-type-modal input {
+    margin-bottom: 15px;
+    width: 300px;
+}
+
+.buttons-container {
+    margin-top: 15px;
+    float: right;
+}
+
+.save-button {
+    margin-left: 5px;
+}
+
+.close-icon {
+    color: red;
+}
+
+.save-icon {
+    color: rgb(35, 35, 104);
+}
