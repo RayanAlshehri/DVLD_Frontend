@@ -95,6 +95,7 @@ function UsersList() {
     }
 
     function convertUserObjToRow(user) {
+        console.log(user)
         return {
             userID: user.id,
             fullName: user.person.fullName,
@@ -120,8 +121,8 @@ function UsersList() {
         try {
             const response = await getUserById(rows.find(r => r.id == selectedRowId).original.userID);
             const updatedUser = convertUserObjToRow(response.data);
-
-            setUsers(users.map(u => u.userID == updatedUser.id ? updatedUser : u));
+            
+            setUsers(users.map(u => u.userID == updatedUser.userID ? updatedUser : u));
         }
         catch(error) {
             console.log(error);
