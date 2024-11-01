@@ -17,6 +17,11 @@ export const getPersonByNationalNumber = (nationalNumber) => {
     return api.get(`/by-national-number/${nationalNumber}`);
 };
 
+export const getTotalNumberOfPersons = () => {
+    return api.get("/total-number-of-persons");
+}
+
+
 export const addNewPerson = (person) => {
     return api.post('', person);
 };

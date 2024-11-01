@@ -7,6 +7,10 @@ const api = axios.create ({
     },
 })
 
+export const getTotalNumberOfLocalLicenseApplications = () => {
+    return api.get();
+}
+
 export const updateApplicationStatus = (applicationId, status) => {
     return api.patch(`/${applicationId}/${status}`);
 }

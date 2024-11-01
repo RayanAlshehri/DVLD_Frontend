@@ -11,6 +11,10 @@ export const getAllLicenseClasses = () => {
     return api.get();
 }
 
+export const getLicenseClassesView = () => {
+    return api.get("/view");
+}
+
 export const getLicenseClass = (LicenseClassId) => {
     return api.get(`/${LicenseClassId}`);
 }

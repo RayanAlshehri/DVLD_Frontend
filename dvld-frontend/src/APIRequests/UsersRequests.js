@@ -27,6 +27,10 @@ export const doesUserExistByUsername = (username) => {
     return api.get(`./${username}/does-exist`);
 }
 
+export const getTotalNumberOfUsers = () => {
+    return api.get("/total-number-of-users");
+}
+
 export const addNewUser = (user) => {
     return api.post('', user);
 }
