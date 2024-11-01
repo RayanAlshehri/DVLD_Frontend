@@ -1,0 +1,32 @@
+.fee-button-container {
+    margin-top: 50px;
+}
+
+.renew-button {
+    height: 45px;
+    float: right;
+}
+
+
+.fee-button-container a {
+    float: right;
+    padding-top: 15px;
+    margin-right: 10px;
+}
+
+.enabled-link {
+    color: blue; 
+    text-decoration: underline;
+}
+
+.enabled-link:visited {
+    color: blue; 
+    text-decoration: underline;
+}
+
+.disabled-link {
+    pointer-events: none;
+    color: gray;
+    cursor: default;
+    text-decoration: underline;
+}
