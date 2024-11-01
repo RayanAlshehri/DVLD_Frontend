@@ -13,6 +13,7 @@ import ApplicationList from './Applications/ApplicationsList/ApplicationsList.js
 import ServicesList from './Manage/ServicesList/ServicesList.jsx';
 import TestTypesList from './Manage/TestTypesList/TestTypesList.jsx';
 import LicenseClassesList from './Manage/LicenseClassesList/LicenseClassesList.jsx';
+import RenewLicense from './Applications/RenewLicense/RenewLicense.jsx';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,14 @@ const router = createBrowserRouter([
           {
             path: "applications/manage-application",
             element: <ApplicationList />
+          },
+          {
+            path: "applications/renew",
+            element: <RenewLicense key="new" />
+          },
+          {
+            path: "applications/renew/:expiredLicenseId/:renewedLicenseId",
+            element: <RenewLicense key="renewed" />
           },
           {
             path: "manage/services",
