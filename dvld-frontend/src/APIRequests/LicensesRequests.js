@@ -14,3 +14,7 @@ export const getLicenseByLicenseId = (licenseId) => {
 export const getLicenseByApplicationId = (applicationId) => {
     return api.get(`/by-application-id/${applicationId}`);
 }
+
+export const renewLicense = (oldLicenseId, createdByUserId) => {
+    return api.post(`/renew/${oldLicenseId}/${createdByUserId}`);
+}
