@@ -200,7 +200,7 @@ function ApplicationList() {
                         </select>
                     </div>
 
-                    <button onClick={() => navigate("/app/local-license-application")} className='main-page-button'>
+                    <button onClick={() => navigate("/app/applications/local-license-application")} className='main-page-button'>
                         <FontAwesomeIcon icon={faFileCirclePlus} className={`main-page-button-icon ${styles[`add-button-icon`]}`} />
                     </button>
                 </div>}
