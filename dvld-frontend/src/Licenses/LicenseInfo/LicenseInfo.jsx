@@ -4,26 +4,32 @@ import { formatDateToDMY } from "../../Global/Util";
 import { PulseLoader } from 'react-spinners';
 import styles from "./LicenseInfo.module.css";
 
-function LicenseInfo({licenseId, onFetchError}) {
+function LicenseInfo({licenseId, onLicenseFound, onFetchError}) {
     const [loading, setLoading] = useState(true);
     const [license, setLicense] = useState(null);
 
     useEffect(() => {
         async function getLicense() {
+            console.log("Fetching license with id: " + licenseId);
             try {
                 const response = await getLicenseByLicenseId(licenseId);
                 setLicense(response.data);
+                onLicenseFound?.(response.data.id);
             }
             catch (error) {
                 console.log(error);
+                onFetchError?.()
+                setLicense(null);
             }
             finally {
                 setLoading(false);
             }
         }
 
-        getLicense();
-    }, [])
+        if (licenseId)
+            getLicense();
+
+    }, [licenseId])
 
     function renderContent() {
         const emptyState = (
@@ -82,9 +88,8 @@ function LicenseInfo({licenseId, onFetchError}) {
     }
 
     return (
-        <div className={styles["license-info-container"]}>
+        <div className={`${styles["license-info-container-general"]} ${loading && licenseId ? styles["license-info-container-loading"] : styles["license-info-container"]}`}>
             {renderContent()}
-            {licenseId && !loading && !license && onFetchError?.()}
         </div>
     )
 }
