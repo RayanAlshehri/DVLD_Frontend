@@ -119,7 +119,7 @@ function PersonsList() {
             lastName: person.lastName,
             gender: person.gender == 'M' ? 'Male' : 'Female',
             dateOfBirth: formatDateToDMY(new Date(person.dateOfBirth)),
-            nationality: person.nationality,
+            nationality: person.country.name,
             phone: person.phone,
             email: person.email,
             address: person.address
