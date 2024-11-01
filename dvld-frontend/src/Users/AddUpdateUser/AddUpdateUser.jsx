@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faFloppyDisk, faLock } from '@fortawesome/free-solid-svg-icons';
 import { addNewUser, doesUserExistByPersonId, doesUserExistByUsername, getUserById, updateUser } from '../../APIRequests/UsersRequests';
 import styles from './AddUpdateUser.module.css'
+import PersonInfo from '../../Persons/PersonInfo/PersonInfo';
 
 const modes = {
     add: 0,
@@ -20,6 +21,7 @@ function AddUpdateUser({ userId = 0, onUserAdded, onUserUpdate, onRequestClose }
     const [loading, setLoading] = useState(true);
     const [fetchErrorOccured, setFetchErrorOccured] = useState(false);
     const [personFound, setPersonFound] = useState(false);
+    const [updateModePersonId, setUpdateModePersonId] = useState(0);
     const [accountStatus, setAccountStatus] = useState(true);
     const [updatePasswordVisible, setUpdatePasswordVisible] = useState(false);
     const [viewUserListPermissionChecked, setViewUserListPermissionChecked] = useState(false);
@@ -81,6 +83,7 @@ function AddUpdateUser({ userId = 0, onUserAdded, onUserUpdate, onRequestClose }
     }
 
     function loadUserInfoToInputs(user) {
+        setUpdateModePersonId(user.person.id);
         setUser({
             username: user.username
         });
@@ -231,8 +234,20 @@ function AddUpdateUser({ userId = 0, onUserAdded, onUserUpdate, onRequestClose }
         else if (!fetchErrorOccured) {
             return (
                 <>
-                    <FindPerson findEnabled={mode == modes.add} onPersonFound={handlePersonFound} />
-                    <h4>User Informartion:</h4>
+                    {mode == modes.add ?
+                        <FindPerson findEnabled={mode == modes.add} onPersonFound={handlePersonFound} />
+                        :
+                        <>
+                        <h2>Person Informartion:</h2>
+                            <PersonInfo identifier={updateModePersonId} />
+                        </>
+                    }
+                    
+                    {mode == modes.add ?
+                        <h4>User Informartion:</h4>
+                        :
+                        <h2>User Informartion:</h2>
+                    }
                     <form onSubmit={handleSubmit}>
                         <div className={styles["user-info-container"]}>
                             <div className={styles["left-fields"]}>
