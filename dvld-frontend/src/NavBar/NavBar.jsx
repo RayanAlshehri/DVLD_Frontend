@@ -18,7 +18,9 @@ function NavBar({showNavLinks}) {
     {text: "Test Types", subItems: [], onClick: () => navigate("/app/manage/test-types")}, {text: "License Classes", subItems: [], onClick: () => navigate("/app/manage/license-classes")}]
 
     useEffect(() => {
-        if (location.pathname.includes("persons"))
+        if (location.pathname.includes("dashboard"))
+            setActiveItem("Dashboard");
+        else if (location.pathname.includes("persons"))
             setActiveItem("Persons");
         else if (location.pathname.includes("users"))
             setActiveItem("Users");
@@ -47,6 +49,8 @@ function NavBar({showNavLinks}) {
                 {showNavLinks && (
                     <>
                         <ul>
+                            <li onClick={() => navigate("/app/dashboard")} className={activeItem == "Dashboard" ? styles.activeMainMenuItem : ""} >
+                                Dashboard</li>
                             <li onMouseOver={() => setApplicationsSubMenuVisible(true)} onMouseLeave={() => setApplicationsSubMenuVisible(false)} className={activeItem == "Applications" ? styles.activeMainMenuItem : ""}>
                                 Applications
                                 {applicationsSubMenuVisible &&
