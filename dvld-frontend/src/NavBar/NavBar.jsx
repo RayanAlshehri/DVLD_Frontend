@@ -11,7 +11,8 @@ function NavBar({showNavLinks}) {
     const {user} = useUser();
     const navigate = useNavigate();
     const location = useLocation();
-    const applicationsMenuItems = [{text: "New", subItems: [{text: "Driving License", subItems: [{text: "Local License", subItems: [], onClick: handleLocalLicenseMenuItemClick}]}]}, 
+    const applicationsMenuItems = [{text: "New", subItems: [{text: "Driving License", subItems: [{text: "Local License", subItems: [], onClick: handleLocalLicenseMenuItemClick}]}, 
+    {text: "Renew License", subItems: [], onClick: () => navigate("/app/applications/renew")}]}, 
     {text: "Manage Applications", subItems: [], onClick: handleManageApplicationsClick}]
     const manageMenuItems = [{text: "Services", subItems: [], onClick: () => navigate("/app/manage/services")},
     {text: "Test Types", subItems: [], onClick: () => navigate("/app/manage/test-types")}, {text: "License Classes", subItems: [], onClick: () => navigate("/app/manage/license-classes")}]
