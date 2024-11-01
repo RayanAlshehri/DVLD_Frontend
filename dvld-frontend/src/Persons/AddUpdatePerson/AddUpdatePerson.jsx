@@ -48,7 +48,6 @@ function AddUpdatePerson({identifier= null, onRequestClose, onPersonAddition, on
     const oldNationalNumber = useRef(null);
     const { messageBoxVisible, messageBoxMessage, messageBoxType, showMessageBox, handleMessageBoxClose } = useMessageBox();
     const isAdded = useRef(false);
-    const isUpdated = useRef(false);
 
     useEffect(() => {
         async function fetchCountries() {
@@ -165,7 +164,6 @@ function AddUpdatePerson({identifier= null, onRequestClose, onPersonAddition, on
                 await PersonsRequests.updatePerson(personId.current, formData);
                 onPersonUpdate?.();
                 showMessageBox("Person updated successfully", "success");
-                isUpdated.current = true;
             }
         } catch (error) {
             console.error(error);
@@ -448,7 +446,7 @@ function AddUpdatePerson({identifier= null, onRequestClose, onPersonAddition, on
                     />
                 )}
 
-                {(isAdded.current || isUpdated.current || fetchErrorOccured) && !messageBoxVisible && onRequestClose()}
+                {(isAdded.current || fetchErrorOccured) && !messageBoxVisible && onRequestClose()}
             </Modal>
         </div>
     );
