@@ -163,6 +163,7 @@ function AddUpdatePerson({identifier= null, onRequestClose, onPersonAddition, on
             } else {            
                 formData.append('deleteImage', person.image == null);   
                 await PersonsRequests.updatePerson(personId.current, formData);
+                onPersonUpdate?.();
                 showMessageBox("Person updated successfully", "success");
                 isUpdated.current = true;
             }
