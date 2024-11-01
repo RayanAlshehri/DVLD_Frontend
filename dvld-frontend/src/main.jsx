@@ -14,6 +14,7 @@ import ServicesList from './Manage/ServicesList/ServicesList.jsx';
 import TestTypesList from './Manage/TestTypesList/TestTypesList.jsx';
 import LicenseClassesList from './Manage/LicenseClassesList/LicenseClassesList.jsx';
 import RenewLicense from './Applications/RenewLicense/RenewLicense.jsx';
+import Dashboard from './Dashboard/Dashboard.jsx';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
         path: "/app",
         element: <NavBar showNavLinks={true} />,
         children: [
+          {
+            path: "dashboard",
+            element: <Dashboard />,
+          },
           {
             path: "persons",
             element: <PersonsList />,
